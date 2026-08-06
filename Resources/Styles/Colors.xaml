@@ -41,4 +41,8 @@
     <SolidColorBrush x:Key="Gray600Brush" Color="{StaticResource Gray600}"/>
     <SolidColorBrush x:Key="Gray900Brush" Color="{StaticResource Gray900}"/>
     <SolidColorBrush x:Key="Gray950Brush" Color="{StaticResource Gray950}"/>
+
+    <Color x:Key="CardBackground">#FFFFFF</Color>
+    <Color x:Key="StatusAvailable">#2E7D32</Color>
+    <Color x:Key="StatusFull">#C62828</Color>
 </ResourceDictionary>

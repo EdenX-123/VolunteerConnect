@@ -2,10 +2,62 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VolunteerConnect.Views.HomePage"
-             Title="HomePage">
+             Title="Home">
 
-    <Label Text="Home Page - coming soon"
-           HorizontalOptions="Center"
-            VerticalOptions="Center"/>
-            
+       <ScrollView>
+              <VerticalStackLayout
+                     Padding="20"
+                     Spacing="12">
+                     <!-- App name + intro: static text, no x:Name needed since it never changes -->
+                     <Label Text="Welcome to the VolunteerConnect App"
+                            FontSize="24"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"/>
+
+                     <Label Text="This is an app that helps you find volunteer opportunities"
+                            FontSize="16"
+                            HorizontalTextAlignment="Center"/>
+
+                     <!-- Section label for the featured card -->
+                     <Label Text="Featured Opportunity"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            Margin="0,10,0,0"/>
+
+                     <!-- The featured opportunity "card". Border gives rounded corners.
+                 Image, title, category all need x:Name because C# fills them in later. -->
+                     <Border StrokeShape="RoundRectangle 15"
+                             StrokeThickness="0"
+                             Padding="10">
+                            <VerticalStackLayout Spacing="4">
+                                   <Border StrokeShape="RoundRectangle 15"
+                                           StrokeThickness="0"
+                                           Padding="10">
+                                          <Image x:Name="FeaturedImage"
+                                                 Aspect="AspectFill"
+                                                 HeightRequest="140"/>
+                                   </Border>
+                                   <Label x:Name="FeaturedTitleLabel"
+                                          FontSize="18"
+                                          FontAttributes="Bold"/>
+
+                                   <Label x:Name="FeaturedCategoryLabel"
+                                          FontSize="14"
+                                          TextColor="Gray"/>
+
+                            </VerticalStackLayout>
+                     </Border>
+
+                     <!-- Count label — text is set in C#, so no hardcoded number here -->
+                     <Label x:Name="OpportunitiesCountLabel"
+                            FontSize="16"
+                            Margin="0,10,0,0"/>
+
+                     <!-- Navigation button -->
+                     <Button Text="Browse Opportunities"
+                             Clicked="OnBrowseOpportunitiesClicked"
+                             Margin="0,10,0,0"/>
+
+              </VerticalStackLayout>
+       </ScrollView>
 </ContentPage>

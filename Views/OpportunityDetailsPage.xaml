@@ -1,11 +1,38 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VolunteerConnect.Views.OpportunityDetailsPage"
-             Title="OpportunityDetailsPage">
+             Title="Opportunity Details">
 
-    <Label Text="OpportunityDetailsPage Page - coming soon"
-           HorizontalOptions="Center"
-            VerticalOptions="Center"/>
-            
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="8">
+
+            <Image x:Name="DetailImage" HeightRequest="180" Aspect="AspectFill" />
+
+            <Label x:Name="DetailTitle" Style="{StaticResource CardTitleStyle}" FontSize="22" />
+            <Label x:Name="DetailCategory" Style="{StaticResource CardSubtitleStyle}" />
+
+            <Label Text="Date &amp; Time" Style="{StaticResource SectionHeaderStyle}" FontSize="16" />
+            <Label x:Name="DetailDateTime" Style="{StaticResource BodyTextStyle}" />
+
+            <Label Text="Location" Style="{StaticResource SectionHeaderStyle}" FontSize="16" />
+            <Label x:Name="DetailLocation" Style="{StaticResource BodyTextStyle}" />
+
+            <Label Text="Description" Style="{StaticResource SectionHeaderStyle}" FontSize="16" />
+            <Label x:Name="DetailDescription" Style="{StaticResource BodyTextStyle}" />
+
+            <Label Text="Requirements" Style="{StaticResource SectionHeaderStyle}" FontSize="16" />
+            <Label x:Name="DetailRequirements" Style="{StaticResource BodyTextStyle}" />
+
+            <Label x:Name="DetailPlaces" Style="{StaticResource BodyTextStyle}" FontAttributes="Bold" />
+
+            <Button x:Name="RegisterButton"
+                    Text="Register Interest"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Margin="0,16,0,0"
+                    Clicked="OnRegisterClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
 </ContentPage>
