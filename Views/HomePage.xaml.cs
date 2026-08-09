@@ -3,41 +3,41 @@ namespace VolunteerConnect.Views;
 
 public partial class HomePage : ContentPage
 {
-	public HomePage()
-	{
-		InitializeComponent();
-	}
-
-    protected override void OnAppearing()
+    private readonly DatabaseService _databaseService;
+    public HomePage(DatabaseService databaseService)
     {
-        base.OnAppearing();
-		LoadFeaturedOpportunity();
+        InitializeComponent();
+        _databaseService = databaseService;
     }
 
-	private void LoadFeaturedOpportunity()
-	{
-		        // Pull the (currently fake) data list from SampleData.cs
-        var opportunities = SampleData.GetOpportunities();
- 
-        // Pick the first one that's available as our "featured" pick.
-        // FirstOrDefault returns null if nothing matches, so we check for that.
-        var featured = opportunities.FirstOrDefault(o => o.IsAvailable);
- 
-        if (featured != null)
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        await LoadFeaturedOpportunityAsync();
+    }
+
+    private async Task LoadFeaturedOpportunityAsync()
+    {
+        // Pull the (currently fake) data list from SampleData.cs
+        var opportunities = await _databaseService.GetOpportunitiesAsync();
+        var availableOpporturnities = opportunities.Where(o => o.IsAvailable).ToList();
+
+        if (availableOpporturnities.Count > 0)
         {
-            // Here's where x:Name pays off — FeaturedImage, FeaturedTitleLabel etc.
-            // are the exact names you gave the controls in the XAML.
+            var random = new Random();
+            var featured = availableOpporturnities[random.Next(availableOpporturnities.Count)];
+
             FeaturedImage.Source = featured.ImageName;
             FeaturedTitleLabel.Text = featured.Title;
             FeaturedCategoryLabel.Text = featured.Category;
         }
- 
+
         // Count label — built dynamically instead of hardcoded
         OpportunitiesCountLabel.Text = $"{opportunities.Count} opportunities available";
 
-	}
-	    // This method name must match the Clicked="..." value in the XAML exactly.
-    private async void OnBrowseOpportunitiesClicked(object sender, EventArgs e)
+    }
+    // This method name must match the Clicked="..." value in the XAML exactly.
+    private async void OnBrowseOpportunitiesClicked(object? sender, EventArgs e)
     {
         // Shell.Current.GoToAsync navigates using the route name.
         // nameof(OpportunitiesPage) just gives you the string "OpportunitiesPage" safely

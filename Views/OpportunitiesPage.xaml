@@ -6,8 +6,8 @@
              Title="Opportunities">
 
        <Grid RowDefinitions="Auto,*"
-                     Padding="16"
-                     RowSpacing="10">
+             Padding="16"
+             RowSpacing="10">
 
               <!-- Search bar: the "at least one search/filter" requirement -->
               <SearchBar x:Name="SearchBox"
@@ -20,37 +20,44 @@
                               SelectionMode="None">
                      <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:VolunteerOpportunity">
-                                   <Frame Style="{StaticResource CardFrameStyle}">
-                                          <Frame.GestureRecognizers>
+                                   <Border Style="{StaticResource CardFrameStyle}"
+                                           HeightRequest="200">
+                                          <Border.GestureRecognizers>
                                                  <TapGestureRecognizer Tapped="OnOpportunityTapped"
                                                                        CommandParameter="{Binding Id}"/>
-                                          </Frame.GestureRecognizers>
+                                          </Border.GestureRecognizers>
 
                                           <Grid ColumnDefinitions="90,*"
-                                                        ColumnSpacing="12">
+                                                ColumnSpacing="12">
 
-                                                 <Border StrokeShape="RoundRectangle 30"
+                                                 <Border StrokeShape="RoundRectangle 12"
                                                          StrokeThickness="0"
-                                                         Padding="10">
-
-                                                        <Image Grid.Column="0"
-                                                               Source="{Binding ImageName}"
-                                                               Style="{StaticResource CardImageStyle}"
-                                                               HeightRequest="90"
-                                                                      WidthRequest="90"/>
+                                                         WidthRequest="90"
+                                                         Grid.Column="0">
+                                                        <Image
+                                                               Aspect="AspectFill"
+                                                               Source="{Binding ImageName}"/>
                                                  </Border>
 
                                                  <VerticalStackLayout Grid.Column="1"
-                                                               Spacing="2">
+                                                                      Spacing="2"
+                                                                      Padding="10">
                                                         <Label Text="{Binding Title}"
-                                                                      Style="{StaticResource CardTitleStyle}"/>
+                                                               Style="{StaticResource CardTitleStyle}"/>
                                                         <Label Text="{Binding Category}"
-                                                                      Style="{StaticResource CardSubtitleStyle}"/>
+                                                               Style="{StaticResource CardSubtitleStyle}"/>
                                                         <Label Text="{Binding Location}"
-                                                                      Style="{StaticResource CardSubtitleStyle}"/>
+                                                               Style="{StaticResource CardSubtitleStyle}"/>
                                                         <Label Text="{Binding Date, StringFormat='{0:dd MMM yyyy}'}"
                                                                Style="{StaticResource CardSubtitleStyle}"/>
-
+                                                        <Label Text="{Binding Time}"
+                                                               Style="{StaticResource CardSubtitleStyle}"/>
+                                                        <Label Text="{Binding Description}"
+                                                               Style="{StaticResource BodyTextStyle}"
+                                                               LineBreakMode="TailTruncation"
+                                                               MaxLines="1"/>
+                                                        <Label Text="{Binding AvailablePlaces, StringFormat='{0} places available'}"
+                                                               Style="{StaticResource CardSubtitleStyle}"/>
                                                         <Label Text="Available"
                                                                Style="{StaticResource StatusAvailableStyle}"
                                                                IsVisible="{Binding IsAvailable}"/>
@@ -59,14 +66,14 @@
                                                                IsVisible="{Binding IsAvailable, Converter={StaticResource InvertedBoolConverter}}"/>
                                                  </VerticalStackLayout>
                                           </Grid>
-                                   </Frame>
+                                   </Border>
                             </DataTemplate>
                      </CollectionView.ItemTemplate>
 
                      <CollectionView.EmptyView>
                             <Label Text="No opportunities match your search."
                                    HorizontalOptions="Center"
-                                          VerticalOptions="Center"
+                                   VerticalOptions="Center"
                                    Style="{StaticResource BodyTextStyle}"/>
                      </CollectionView.EmptyView>
               </CollectionView>

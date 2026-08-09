@@ -22,20 +22,20 @@
                      <Label Text="Featured Opportunity"
                             FontSize="18"
                             FontAttributes="Bold"
-                            Margin="0,10,0,0"/>
+                            Margin="10,10,0,0"/>
 
                      <!-- The featured opportunity "card". Border gives rounded corners.
                  Image, title, category all need x:Name because C# fills them in later. -->
-                     <Border StrokeShape="RoundRectangle 15"
+                     <Border StrokeShape="RoundRectangle 12"
                              StrokeThickness="0"
                              Padding="10">
                             <VerticalStackLayout Spacing="4">
-                                   <Border StrokeShape="RoundRectangle 15"
-                                           StrokeThickness="0"
-                                           Padding="10">
+
+                                   <Border StrokeShape="RoundRectangle 12"
+                                           StrokeThickness="1"
+                                           HeightRequest="140">
                                           <Image x:Name="FeaturedImage"
-                                                 Aspect="AspectFill"
-                                                 HeightRequest="140"/>
+                                                 Aspect="AspectFill"/>
                                    </Border>
                                    <Label x:Name="FeaturedTitleLabel"
                                           FontSize="18"

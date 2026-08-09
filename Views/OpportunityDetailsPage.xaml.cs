@@ -6,24 +6,27 @@ namespace VolunteerConnect.Views;
 [QueryProperty(nameof(OpportunityId), "Id")]
 public partial class OpportunityDetailsPage : ContentPage
 {
+    private readonly DatabaseService _databaseService;
+
     private VolunteerOpportunity? _opportunity;
 
     public int OpportunityId { get; set; }
 
-    public OpportunityDetailsPage()
+    public OpportunityDetailsPage(DatabaseService databaseService)
     {
         InitializeComponent();
+        _databaseService = databaseService;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
-        LoadOpportunity();
+        await LoadOpportunityAsync();
     }
 
-    private void LoadOpportunity()
+    private async Task LoadOpportunityAsync()
     {
-        _opportunity = SampleData.GetById(OpportunityId);
+        _opportunity = await _databaseService.GetOpportunityByIdAsync(OpportunityId);
 
         if (_opportunity == null)
         {
@@ -48,7 +51,7 @@ public partial class OpportunityDetailsPage : ContentPage
         RegisterButton.IsEnabled = _opportunity.IsAvailable;
     }
 
-    private async void OnRegisterClicked(object sender, EventArgs e)
+    private async void OnRegisterClicked(object? sender, EventArgs e)
     {
         if (_opportunity == null) return;
 

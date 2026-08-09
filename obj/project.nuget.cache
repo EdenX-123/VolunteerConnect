@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VOt2bk8173c=",
+  "dgSpecHash": "+buDYUNprqM=",
   "success": true,
   "projectFilePath": "/Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/VolunteerConnect.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,11 @@
     "/Users/edenx/.nuget/packages/microsoft.maui.graphics/10.0.20/microsoft.maui.graphics.10.0.20.nupkg.sha512",
     "/Users/edenx/.nuget/packages/microsoft.maui.resizetizer/10.0.20/microsoft.maui.resizetizer.10.0.20.nupkg.sha512",
     "/Users/edenx/.nuget/packages/microsoft.net.illink.tasks/10.0.7/microsoft.net.illink.tasks.10.0.7.nupkg.sha512",
+    "/Users/edenx/.nuget/packages/sourcegear.sqlite3/3.53.3/sourcegear.sqlite3.3.53.3.nupkg.sha512",
+    "/Users/edenx/.nuget/packages/sqlite-net-pcl/1.11.285/sqlite-net-pcl.1.11.285.nupkg.sha512",
+    "/Users/edenx/.nuget/packages/sqlitepclraw.core/3.0.3/sqlitepclraw.core.3.0.3.nupkg.sha512",
+    "/Users/edenx/.nuget/packages/sqlitepclraw.provider.e_sqlite3/3.0.3/sqlitepclraw.provider.e_sqlite3.3.0.3.nupkg.sha512",
+    "/Users/edenx/.nuget/packages/sqlitepclraw.provider.sqlite3/3.0.3/sqlitepclraw.provider.sqlite3.3.0.3.nupkg.sha512",
     "/Users/edenx/.nuget/packages/xamarin.android.glide/4.16.0.14/xamarin.android.glide.4.16.0.14.nupkg.sha512",
     "/Users/edenx/.nuget/packages/xamarin.android.glide.annotations/4.16.0.14/xamarin.android.glide.annotations.4.16.0.14.nupkg.sha512",
     "/Users/edenx/.nuget/packages/xamarin.android.glide.disklrucache/4.16.0.14/xamarin.android.glide.disklrucache.4.16.0.14.nupkg.sha512",

@@ -5,21 +5,24 @@ namespace VolunteerConnect.Views;
 
 public partial class OpportunitiesPage : ContentPage
 {
+    private readonly DatabaseService _databaseService;
+
     private List<VolunteerOpportunity> _allOpportunities = new();
 
-    public OpportunitiesPage()
+    public OpportunitiesPage(DatabaseService databaseService)
     {
         InitializeComponent();
+        _databaseService = databaseService;
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
-        _allOpportunities = SampleData.GetOpportunities();
+        _allOpportunities = await _databaseService.GetOpportunitiesAsync();
         OpportunitiesCollectionView.ItemsSource = _allOpportunities;
     }
 
-    private void OnSearchTextChanged(object sender, TextChangedEventArgs e)
+    private void OnSearchTextChanged(object? sender, TextChangedEventArgs e)
     {
         var query = e.NewTextValue?.Trim() ?? string.Empty;
 
@@ -30,7 +33,7 @@ public partial class OpportunitiesPage : ContentPage
                 .ToList();
     }
 
-    private async void OnOpportunityTapped(object sender, TappedEventArgs e)
+    private async void OnOpportunityTapped(object? sender, TappedEventArgs e)
     {
         if (e.Parameter is int id)
         {

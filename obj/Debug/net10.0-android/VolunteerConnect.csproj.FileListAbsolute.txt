@@ -1621,3 +1621,12 @@
 /Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/obj/Debug/net10.0-android/resizetizer/r/drawable/foodbank.png
 /Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/obj/Debug/net10.0-android/resizetizer/r/drawable/garden.png
 /Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/obj/Debug/net10.0-android/resizetizer/r/drawable/library.png
+/Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/obj/Debug/net10.0-android/android/assets/arm64-v8a/SQLite-net.dll
+/Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/obj/Debug/net10.0-android/android/assets/arm64-v8a/SQLite-net.jlo.xml
+/Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/obj/Debug/net10.0-android/android/assets/arm64-v8a/SQLite-net.typemap.xml
+/Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/obj/Debug/net10.0-android/android/assets/arm64-v8a/SQLitePCLRaw.core.dll
+/Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/obj/Debug/net10.0-android/android/assets/arm64-v8a/SQLitePCLRaw.core.jlo.xml
+/Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/obj/Debug/net10.0-android/android/assets/arm64-v8a/SQLitePCLRaw.core.typemap.xml
+/Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/obj/Debug/net10.0-android/android/assets/arm64-v8a/SQLitePCLRaw.provider.e_sqlite3.dll
+/Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/obj/Debug/net10.0-android/android/assets/arm64-v8a/SQLitePCLRaw.provider.e_sqlite3.jlo.xml
+/Users/edenx/ClassWork/MobileAppDevelopment/Assignments/VolunteerConnect/obj/Debug/net10.0-android/android/assets/arm64-v8a/SQLitePCLRaw.provider.e_sqlite3.typemap.xml

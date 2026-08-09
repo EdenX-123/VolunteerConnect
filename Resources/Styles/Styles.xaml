@@ -432,18 +432,14 @@
     </Style>
 
     <!-- Custom styles for VolunteerConnect cards -->
-    <Style x:Key="CardFrameStyle" TargetType="Frame">
-        <Setter Property="CornerRadius" Value="12" />
-        <Setter Property="Padding" Value="12" />
+    <Style x:Key="CardFrameStyle" TargetType="Border">
+        <Setter Property="StrokeShape" Value="RoundRectangle 12" />
+        <Setter Property="Stroke" Value="#DDDDDD" />
+        <Setter Property="StrokeThickness" Value="2" />
         <Setter Property="Margin" Value="0,6" />
-        <Setter Property="HasShadow" Value="True" />
         <Setter Property="BackgroundColor" Value="{StaticResource CardBackground}" />
     </Style>
 
-    <Style x:Key="CardImageStyle" TargetType="Image">
-        <Setter Property="Aspect" Value="AspectFill" />
-        <Setter Property="HeightRequest" Value="140" />
-    </Style>
 
     <Style x:Key="CardTitleStyle" TargetType="Label">
         <Setter Property="FontAttributes" Value="Bold" />
