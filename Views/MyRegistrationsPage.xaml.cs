@@ -1,9 +1,27 @@
+using VolunteerConnect.Services;
+
 namespace VolunteerConnect.Views;
 
 public partial class MyRegistrationsPage : ContentPage
 {
-	public MyRegistrationsPage()
+    private readonly DatabaseService _databaseService;
+
+    public MyRegistrationsPage(DatabaseService databaseService)
+    {
+        InitializeComponent();
+        _databaseService = databaseService;
+    }
+
+	private async void OnMyRegistrationsTapped(object? sender, TappedEventArgs e)
 	{
-		InitializeComponent();
+        if (e.Parameter is int id)
+		{
+            await Shell.Current.GoToAsync($"{nameof(RegistrationPage)}?RegistrationId={id}");
+		}
 	}
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        RegistrationsCollectionView.ItemsSource = await _databaseService.GetRegistrationsAsync();
+    }
 }

@@ -30,7 +30,7 @@
                                           <Grid ColumnDefinitions="90,*"
                                                 ColumnSpacing="12">
 
-                                                 <Border StrokeShape="RoundRectangle 12"
+                                                 <Border StrokeShape="RoundRectangle 0"
                                                          StrokeThickness="0"
                                                          WidthRequest="90"
                                                          Grid.Column="0">

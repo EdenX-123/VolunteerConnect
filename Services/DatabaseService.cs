@@ -102,6 +102,30 @@ namespace VolunteerConnect.Services
                 .FirstOrDefaultAsync();
         }
 
-        
+        public async Task<List<VolunteerRegistration>> GetRegistrationsAsync()
+        {
+            await InitialiseAsync();
+            return await _database!.Table<VolunteerRegistration>().ToListAsync();
+        }
+
+
+        public async Task<int> SaveRegistrationAsync(VolunteerRegistration registration)
+        {
+            await InitialiseAsync();
+
+            if(registration.Id !=0)
+                return await _database!.UpdateAsync(registration);
+
+            return await _database!.InsertAsync(registration);
+        }
+
+
+        public async Task<int> DeleteRegistrationsAsync(VolunteerRegistration registration)
+        {
+            await InitialiseAsync();
+            return await _database!.DeleteAsync(registration);
+        }
+
+
     }
 }

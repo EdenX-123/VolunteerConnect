@@ -1,11 +1,66 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VolunteerConnect.Views.RegistrationPage"
-             Title="RegistrationPage">
-   
-    <Label Text="RegistrationPage Page - coming soon"
-           HorizontalOptions="Center"
-            VerticalOptions="Center"/>
-            
+             Title="Register Interest">
+
+       <ScrollView>
+              <VerticalStackLayout Padding="20"
+                                   Spacing="10">
+
+                     <Label x:Name="OpportunityTitleLabel"
+                            Style="{StaticResource SectionHeaderStyle}"/>
+
+                     <Label Text="Preferred Name"
+                            FontAttributes="Bold"/>
+                     <Entry x:Name="PreferredNameEntry"
+                            Placeholder="Enter your name"/>
+
+                     <Label Text="Email or Phone"
+                            FontAttributes="Bold"/>
+                     <Entry x:Name="ContactEntry"
+                            Placeholder="Enter email or phone"/>
+
+                     <Label Text="Availability"
+                            FontAttributes="Bold"/>
+                     <Entry x:Name="AvailabilityEntry"
+                            Placeholder="e.g. Weekday mornings"/>
+
+                     <Label Text="Notes (optional)"
+                            FontAttributes="Bold"/>
+                     <Editor x:Name="NotesEditor"
+                             HeightRequest="80"/>
+
+                     <HorizontalStackLayout Spacing="8"
+                                            Margin="0,10,0,0">
+
+                            <CheckBox x:Name="ConsentCheckBox"/>
+
+                            <Label Text="Privacy Consent"
+                                   VerticalOptions="Center"/>
+
+                     </HorizontalStackLayout>
+
+                     <Label Text="I consent to my information being collected for this registration."
+                            VerticalOptions="Center"/>
+
+                     <Label x:Name="ErrorLabel"
+                            TextColor="Red"
+                            IsVisible="False"/>
+
+                     <Button Text="Submit Registration"
+                            x:Name="SubmitButton"
+                             Style="{StaticResource PrimaryButtonStyle}"
+                             Clicked="OnSubmitClicked"
+                             Margin="0,16,0,0"/>
+
+                     <Button x:Name="DeleteButton"
+                             Text="Delete Registration"
+                             BackgroundColor="Red"
+                             IsVisible="False"
+                             Clicked="OnDeleteClicked"
+                             Margin="0,8,0,0"/>
+
+              </VerticalStackLayout>
+       </ScrollView>
 </ContentPage>

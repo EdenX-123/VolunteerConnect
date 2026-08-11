@@ -1,0 +1,15 @@
+<api>
+  <jcw-types>
+    <type name="MainActivity" package="crc645521e321790494e4" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="crc6488302ad6e9e4df1a.MauiAppCompatActivity" partial_assembly_qualified_name="VolunteerConnect.MainActivity, VolunteerConnect">
+      <constructors>
+        <constructor name="MainActivity" method="n_.ctor:()V:" jni_signature="()V" managed_parameters="" retval="void" is_dynamically_registered="True" />
+        <constructor name="MainActivity" method="n_.ctor:(I)V:" jni_signature="(I)V" managed_parameters="System.Int32, System.Private.CoreLib" params="int p0" retval="void" is_dynamically_registered="True" super_call="p0" activate_call="p0" />
+      </constructors>
+    </type>
+    <type name="MainApplication" package="crc645521e321790494e4" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="crc6488302ad6e9e4df1a.MauiApplication" is_application="True" partial_assembly_qualified_name="VolunteerConnect.MainApplication, VolunteerConnect" application_constructor="MainApplication" />
+  </jcw-types>
+  <acw-types partial-assembly-name="VolunteerConnect" module-name="VolunteerConnect.dll">
+    <type assembly-qualified-name="VolunteerConnect.MainActivity, VolunteerConnect, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="volunteerconnect.MainActivity" java-key="crc645521e321790494e4.MainActivity" managed-key="VolunteerConnect.MainActivity" partial-assembly-qualified-name="VolunteerConnect.MainActivity, VolunteerConnect" />
+    <type assembly-qualified-name="VolunteerConnect.MainApplication, VolunteerConnect, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="volunteerconnect.MainApplication" java-key="crc645521e321790494e4.MainApplication" managed-key="VolunteerConnect.MainApplication" partial-assembly-qualified-name="VolunteerConnect.MainApplication, VolunteerConnect" />
+  </acw-types>
+</api>
