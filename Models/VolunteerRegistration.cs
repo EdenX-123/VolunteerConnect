@@ -13,4 +13,7 @@ public class VolunteerRegistration
     public string Notes { get; set; } = string.Empty;
     public bool ConsentGiven { get; set; }
     public DateTime RegistrationDate { get; set; }
+
+    [Ignore]
+    public string OpportunityTitle {get; set;} = string.Empty;
 }

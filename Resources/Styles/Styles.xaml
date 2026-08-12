@@ -434,9 +434,9 @@
     <!-- Custom styles for VolunteerConnect cards -->
     <Style x:Key="CardFrameStyle" TargetType="Border">
         <Setter Property="StrokeShape" Value="RoundRectangle 12" />
-        <Setter Property="Stroke" Value="#DDDDDD" />
-        <Setter Property="StrokeThickness" Value="2" />
-        <Setter Property="Margin" Value="0,6" />
+        <Setter Property="Stroke" Value="#FF9500FF" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="Margin" Value="0,5" />
         <Setter Property="BackgroundColor" Value="{StaticResource CardBackground}" />
     </Style>
 

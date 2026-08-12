@@ -5,34 +5,88 @@
              x:Class="VolunteerConnect.Views.MyRegistrationsPage"
              Title="My Registrations">
 
-       <CollectionView x:Name="RegistrationsCollectionView"
-                       Margin="16">
-              <CollectionView.ItemTemplate>
-                     <DataTemplate x:DataType="models:VolunteerRegistration">
-                            <Border Style="{StaticResource CardFrameStyle}">
-                                   <Border.GestureRecognizers>
-                                          <TapGestureRecognizer Tapped="OnMyRegistrationsTapped"
-                                                                CommandParameter="{Binding Id}"/>
-                                   </Border.GestureRecognizers>
-                                   <VerticalStackLayout Spacing="2">
-                                          <Label Text="{Binding PreferredName}"
-                                                 Style="{StaticResource CardTitleStyle}"/>
-                                          <Label Text="{Binding ContactDetail}"
-                                                 Style="{StaticResource CardSubtitleStyle}"/>
-                                          <Label Text="{Binding Availability}"
-                                                 Style="{StaticResource CardSubtitleStyle}"/>
-                                          <Label Text="{Binding RegistrationDate, StringFormat='Registered {0:dd MMM yyyy}'}"
-                                                 Style="{StaticResource CardSubtitleStyle}"/>
-                                   </VerticalStackLayout>
-                            </Border>
-                     </DataTemplate>
-              </CollectionView.ItemTemplate>
+       <Grid RowDefinitions="Auto,*"
+             Padding="16"
+             RowSpacing="8">
 
-              <CollectionView.EmptyView>
-                     <Label Text="You have no saved registrations yet."
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Style="{StaticResource BodyTextStyle}"/>
-              </CollectionView.EmptyView>
-       </CollectionView>
+              <Label Grid.Row="0"
+                     Text="Tap a registration to update or cancel it"
+                     Style="{StaticResource CardSubtitleStyle}"
+                     Margin="4,0,0,4"/>
+
+              <CollectionView x:Name="RegistrationsCollectionView"
+                              Grid.Row="1"
+                              SelectionMode="None">
+                     <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:VolunteerRegistration">
+                                   <Border Style="{StaticResource CardFrameStyle}"
+                                           Padding="14">
+                                          <Border.GestureRecognizers>
+                                                 <TapGestureRecognizer Tapped="OnRegistrationTapped"
+                                                                       CommandParameter="{Binding Id}"/>
+                                          </Border.GestureRecognizers>
+
+                                          <Grid ColumnDefinitions="*,Auto"
+                                                ColumnSpacing="8">
+
+                                                 <VerticalStackLayout Grid.Column="0"
+                                                                      Spacing="3">
+                                                                      
+                                                        <Label Text="{Binding OpportunityTitle}"
+                                                               FontSize="13"
+                                                               FontAttributes="Bold"
+                                                               TextColor="{StaticResource Primary}"/>
+
+                                                        <Label Text="{Binding PreferredName}"
+                                                               Style="{StaticResource CardTitleStyle}"/>
+
+                                                        <HorizontalStackLayout Spacing="4">
+                                                               <Label Text="&#128231;"
+                                                                      FontSize="13"/>
+                                                               <Label Text="{Binding ContactDetail}"
+                                                                      Style="{StaticResource CardSubtitleStyle}"/>
+                                                        </HorizontalStackLayout>
+
+                                                        <HorizontalStackLayout Spacing="4">
+                                                               <Label Text="&#128197;"
+                                                                      FontSize="13"/>
+                                                               <Label Text="{Binding Availability}"
+                                                                      Style="{StaticResource CardSubtitleStyle}"/>
+                                                        </HorizontalStackLayout>
+
+                                                        <Label Text="{Binding RegistrationDate, StringFormat='Registered {0:dd MMM yyyy}'}"
+                                                               FontSize="11"
+                                                               TextColor="#FF0A0A0A"/>
+                                                 </VerticalStackLayout>
+
+                                                 <Label Grid.Column="1"
+                                                        Text="&#8250;"
+                                                        FontSize="24"
+                                                        TextColor="Gray"
+                                                        VerticalOptions="Center"/>
+
+                                          </Grid>
+                                   </Border>
+                            </DataTemplate>
+                     </CollectionView.ItemTemplate>
+
+                     <CollectionView.EmptyView>
+                            <VerticalStackLayout VerticalOptions="Center"
+                                                 HorizontalOptions="Center"
+                                                 Spacing="8"
+                                                 Padding="20">
+                                   <Label Text="&#128203;"
+                                          FontSize="40"
+                                          HorizontalOptions="Center"/>
+                                   <Label Text="No registrations yet"
+                                          Style="{StaticResource CardTitleStyle}"
+                                          HorizontalOptions="Center"/>
+                                   <Label Text="Browse opportunities and register your interest to see them here."
+                                          Style="{StaticResource BodyTextStyle}"
+                                          HorizontalTextAlignment="Center"
+                                          HorizontalOptions="Center"/>
+                            </VerticalStackLayout>
+                     </CollectionView.EmptyView>
+              </CollectionView>
+       </Grid>
 </ContentPage>

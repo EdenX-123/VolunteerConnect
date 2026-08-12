@@ -72,8 +72,11 @@ public partial class RegistrationPage : ContentPage
 
 		await _databaseService.DeleteRegistrationsAsync(_existingRegistration);
 
+        await _databaseService.IncrementAvailablePlacesAsync(_existingRegistration.OpportunityId);
+
 		await DisplayAlertAsync("Delete", "Registration delete successfully.", "OK");
 
+        await Shell.Current.Navigation.PopToRootAsync();
 		await Shell.Current.GoToAsync("..");
 	}
 
@@ -94,6 +97,8 @@ public partial class RegistrationPage : ContentPage
             return;
         }
 
+        bool isNewRegistration = _existingRegistration == null;
+
         var registration = new VolunteerRegistration
         {
 			Id = _existingRegistration?.Id ?? 0,
@@ -108,7 +113,14 @@ public partial class RegistrationPage : ContentPage
 
         await _databaseService.SaveRegistrationAsync(registration);
 
+        if(isNewRegistration)
+        {
+            await _databaseService.DecrementAvailablePlacesAsync(registration.OpportunityId);
+        }
+
         await DisplayAlertAsync("Success", "Your registration has been saved.", "OK");
+
+        await Shell.Current.Navigation.PopToRootAsync();
         await Shell.Current.GoToAsync($"//{nameof(MyRegistrationsPage)}");
     }
 

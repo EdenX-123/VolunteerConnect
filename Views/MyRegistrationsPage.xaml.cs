@@ -12,7 +12,7 @@ public partial class MyRegistrationsPage : ContentPage
         _databaseService = databaseService;
     }
 
-	private async void OnMyRegistrationsTapped(object? sender, TappedEventArgs e)
+	private async void OnRegistrationTapped(object? sender, TappedEventArgs e)
 	{
         if (e.Parameter is int id)
 		{
@@ -22,6 +22,6 @@ public partial class MyRegistrationsPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        RegistrationsCollectionView.ItemsSource = await _databaseService.GetRegistrationsAsync();
+        RegistrationsCollectionView.ItemsSource = await _databaseService.GetRegistrationsWithOpportunityTitlesAsync();
     }
 }

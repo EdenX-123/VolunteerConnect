@@ -88,6 +88,44 @@ namespace VolunteerConnect.Services
 
             await _database.InsertAllAsync(opportunities);
         }
+
+        public async Task DecrementAvailablePlacesAsync(int opportunityId)
+        {
+            await InitialiseAsync();
+            var opportunity = await _database!.Table<VolunteerOpportunity>()
+                .Where(o => o.Id == opportunityId)
+                .FirstOrDefaultAsync();
+
+            if (opportunity == null) return;
+
+            if (opportunity.AvailablePlaces > 0)
+                opportunity.AvailablePlaces -= 1;
+
+            if (opportunity.AvailablePlaces <= 0)
+            {
+                opportunity.AvailablePlaces = 0;
+                opportunity.IsAvailable = false;
+            }
+
+            await _database.UpdateAsync(opportunity);
+        }
+
+        public async Task IncrementAvailablePlacesAsync(int opportunityId)
+        {
+            await InitialiseAsync();
+
+            var opportunity = await _database!.Table<VolunteerOpportunity>()
+                .Where(o => o.Id == opportunityId)
+                .FirstOrDefaultAsync();
+
+            if (opportunity == null) return;
+
+            opportunity.AvailablePlaces += 1;
+            opportunity.IsAvailable = true;
+
+            await _database.UpdateAsync(opportunity);
+        }
+
         public async Task<List<VolunteerOpportunity>> GetOpportunitiesAsync()
         {
             await InitialiseAsync();
@@ -108,12 +146,28 @@ namespace VolunteerConnect.Services
             return await _database!.Table<VolunteerRegistration>().ToListAsync();
         }
 
+        public async Task<List<VolunteerRegistration>> GetRegistrationsWithOpportunityTitlesAsync()
+        {
+            await InitialiseAsync();
+
+            var registrations = await _database!.Table<VolunteerRegistration>().ToListAsync();
+            var opportunities = await _database.Table<VolunteerOpportunity>().ToListAsync();
+
+            foreach (var registration in registrations)
+            {
+                var matchingOpportunity = opportunities.FirstOrDefault(o => o.Id == registration.OpportunityId);
+                registration.OpportunityTitle = matchingOpportunity?.Title ?? "Opportunity no longer available";
+            }
+
+            return registrations;
+        }
+
 
         public async Task<int> SaveRegistrationAsync(VolunteerRegistration registration)
         {
             await InitialiseAsync();
 
-            if(registration.Id !=0)
+            if (registration.Id != 0)
                 return await _database!.UpdateAsync(registration);
 
             return await _database!.InsertAsync(registration);

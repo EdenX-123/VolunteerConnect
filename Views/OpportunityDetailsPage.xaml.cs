@@ -48,15 +48,38 @@ public partial class OpportunityDetailsPage : ContentPage
             ? $"{_opportunity.AvailablePlaces} places available"
             : "No places currently available";
 
-        RegisterButton.IsEnabled = _opportunity.IsAvailable;
+        DetailPlaces.Text = _opportunity.IsAvailable
+            ?$"{_opportunity.AvailablePlaces} places available"
+            :"NO places currently available";
+
+        if(_opportunity.IsAvailable && _opportunity.AvailablePlaces > 0)
+        {
+            RegisterButton.Background = (Color)Application.Current!.Resources["Primary"];
+            RegisterButton.TextColor = Colors.White;
+            RegisterButton.Text = "Register Interest";
+        }
+        else
+        {
+            RegisterButton.Background = Colors.LightGray;
+            RegisterButton.TextColor = Colors.DarkGray;
+            RegisterButton.Text = "Fully Booked";
+        }
     }
 
     private async void OnRegisterClicked(object? sender, EventArgs e)
     {
         if (_opportunity == null) return;
 
-        // RegistrationPage doesn't exist yet with real logic (that's Week 4) —
-        // for now just navigate through so you can confirm the flow works.
+        if(!_opportunity.IsAvailable || _opportunity.AvailablePlaces <= 0)
+        {
+            await DisplayAlertAsync(
+                "NO Places Available",
+                "This opportunity is currently full. Please check back later or choose another opportunity.",
+                "OK"
+            );
+            return;
+        }
+
         await Shell.Current.GoToAsync($"{nameof(RegistrationPage)}?OpportunityId={_opportunity.Id}");
     }
 }

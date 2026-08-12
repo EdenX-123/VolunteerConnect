@@ -29,6 +29,11 @@
                      <Border StrokeShape="RoundRectangle 12"
                              StrokeThickness="0"
                              Padding="10">
+
+                            <Border.GestureRecognizers>
+                                   <TapGestureRecognizer Tapped ="OnFeaturedCardTapped"/>
+                            </Border.GestureRecognizers>
+
                             <VerticalStackLayout Spacing="4">
 
                                    <Border StrokeShape="RoundRectangle 12"

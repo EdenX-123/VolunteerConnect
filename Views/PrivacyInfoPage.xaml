@@ -1,11 +1,93 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VolunteerConnect.Views.PrivacyInfoPage"
-             Title="PrivacyInfoPage">
- 
-    <Label Text="PrivacyInfoPage Page - coming soon"
-           HorizontalOptions="Center"
-            VerticalOptions="Center"/>
-            
+             Title="Privacy">
+
+       <ScrollView>
+              <VerticalStackLayout Padding="20"
+                            Spacing="14">
+
+                     <VerticalStackLayout Spacing="4"
+                                   Margin="0,0,0,8">
+                            <Label Text="&#128274;"
+                                          FontSize="34"
+                                          HorizontalOptions="Center"/>
+                            <Label Text="Your Privacy"
+                                   FontSize="24"
+                                          FontAttributes="Bold"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="How VolunteerConnect handles your information"
+                                   Style="{StaticResource CardSubtitleStyle}"
+                                   HorizontalOptions="Center"/>
+                     </VerticalStackLayout>
+
+                     <Border Style="{StaticResource CardFrameStyle}">
+                            <VerticalStackLayout Spacing="4"
+                                   Padding="14">
+                                   <Label Text="&#128203;  What we collect"
+                                                 Style="{StaticResource CardTitleStyle}"
+                                                 FontSize="16"/>
+                                   <Label Style="{StaticResource BodyTextStyle}"
+                                          Text="When you register interest in an opportunity, we collect your preferred name, an email address or phone number, your availability, and an optional note."/>
+                            </VerticalStackLayout>
+                     </Border>
+
+                     <Border Style="{StaticResource CardFrameStyle}">
+                            <VerticalStackLayout Spacing="4"
+                                   Padding="14">
+                                   <Label Text="&#10067;  Why we collect it"
+                                                 Style="{StaticResource CardTitleStyle}"
+                                                 FontSize="16"/>
+                                   <Label Style="{StaticResource BodyTextStyle}"
+                                          Text="Only to let the community organisation respond to your registration and confirm your availability. We never collect your home address, date of birth, gender, or ID documents."/>
+                            </VerticalStackLayout>
+                     </Border>
+
+                     <Border Style="{StaticResource CardFrameStyle}">
+                            <VerticalStackLayout Spacing="4"
+                                   Padding="14">
+                                   <Label Text="&#128274;  How it is used"
+                                                 Style="{StaticResource CardTitleStyle}"
+                                                 FontSize="16"/>
+                                   <Label Style="{StaticResource BodyTextStyle}"
+                                          Text="Used only to manage your registration inside this app. It is never shared, sold, or sent to a third party."/>
+                            </VerticalStackLayout>
+                     </Border>
+
+                     <Border Style="{StaticResource CardFrameStyle}">
+                            <VerticalStackLayout Spacing="4"
+                                   Padding="14">
+                                   <Label Text="&#128241;  Where it is stored"
+                                                 Style="{StaticResource CardTitleStyle}"
+                                                 FontSize="16"/>
+                                   <Label Style="{StaticResource BodyTextStyle}"
+                                          Text="Stored locally on your device only. This prototype does not use cloud storage or a remote server."/>
+                            </VerticalStackLayout>
+                     </Border>
+
+                     <Border Style="{StaticResource CardFrameStyle}">
+                            <VerticalStackLayout Spacing="4"
+                                   Padding="14">
+                                   <Label Text="&#9997;&#65039;  Your control"
+                                                 Style="{StaticResource CardTitleStyle}"
+                                                 FontSize="16"/>
+                                   <Label Style="{StaticResource BodyTextStyle}"
+                                          Text="You can view, correct, or delete your registration anytime from My Registrations. Deleting removes it and your personal information from this device."/>
+                            </VerticalStackLayout>
+                     </Border>
+
+                     <Border Style="{StaticResource CardFrameStyle}">
+                            <VerticalStackLayout Spacing="4"
+                                   Padding="14">
+                                   <Label Text="&#9989;  Consent"
+                                                 Style="{StaticResource CardTitleStyle}"
+                                                 FontSize="16"/>
+                                   <Label Style="{StaticResource BodyTextStyle}"
+                                          Text="A registration is only saved after you give consent on the registration form. No consent, no data stored."/>
+                            </VerticalStackLayout>
+                     </Border>
+
+              </VerticalStackLayout>
+       </ScrollView>
 </ContentPage>

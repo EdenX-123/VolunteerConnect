@@ -1,9 +1,11 @@
+using VolunteerConnect.Models;
 using VolunteerConnect.Services;
 namespace VolunteerConnect.Views;
 
 public partial class HomePage : ContentPage
 {
     private readonly DatabaseService _databaseService;
+    private VolunteerOpportunity? _featuredOpportunity;
     public HomePage(DatabaseService databaseService)
     {
         InitializeComponent();
@@ -25,16 +27,23 @@ public partial class HomePage : ContentPage
         if (availableOpporturnities.Count > 0)
         {
             var random = new Random();
-            var featured = availableOpporturnities[random.Next(availableOpporturnities.Count)];
+            _featuredOpportunity = availableOpporturnities[random.Next(availableOpporturnities.Count)];
 
-            FeaturedImage.Source = featured.ImageName;
-            FeaturedTitleLabel.Text = featured.Title;
-            FeaturedCategoryLabel.Text = featured.Category;
+            FeaturedImage.Source = _featuredOpportunity.ImageName;
+            FeaturedTitleLabel.Text = _featuredOpportunity.Title;
+            FeaturedCategoryLabel.Text = _featuredOpportunity.Category;
         }
 
         // Count label — built dynamically instead of hardcoded
         OpportunitiesCountLabel.Text = $"{opportunities.Count} opportunities available";
 
+    }
+
+    private async void OnFeaturedCardTapped(object? sender, TappedEventArgs e)
+    {
+        if(_featuredOpportunity == null) return;
+
+        await Shell.Current.GoToAsync($"//{nameof(OpportunitiesPage)}/{nameof(OpportunityDetailsPage)}?Id={_featuredOpportunity.Id}");
     }
     // This method name must match the Clicked="..." value in the XAML exactly.
     private async void OnBrowseOpportunitiesClicked(object? sender, EventArgs e)
@@ -42,7 +51,7 @@ public partial class HomePage : ContentPage
         // Shell.Current.GoToAsync navigates using the route name.
         // nameof(OpportunitiesPage) just gives you the string "OpportunitiesPage" safely
         // (so if you rename the class later, this won't silently break).
-        await Shell.Current.GoToAsync(nameof(OpportunitiesPage));
+        await Shell.Current.GoToAsync($"//{nameof(OpportunitiesPage)}");
     }
 
 }
