@@ -27,11 +27,21 @@ public partial class HomePage : ContentPage
         if (availableOpporturnities.Count > 0)
         {
             var random = new Random();
-            _featuredOpportunity = availableOpporturnities[random.Next(availableOpporturnities.Count)];
+            var featured = availableOpporturnities[random.Next(availableOpporturnities.Count)];
 
-            FeaturedImage.Source = _featuredOpportunity.ImageName;
-            FeaturedTitleLabel.Text = _featuredOpportunity.Title;
-            FeaturedCategoryLabel.Text = _featuredOpportunity.Category;
+            _featuredOpportunity = featured;
+
+            FeaturedImage.Source = featured.ImageName;
+            FeaturedTitleLabel.Text = featured.Title;
+            FeaturedCategoryLabel.Text = featured.Category;
+
+            FeaturedLocationLabel.Text = featured.Location;
+            FeaturedDateLabel.Text = featured.Date.ToString("dd MMM yyyy");
+            FeaturedTimeLabel.Text = featured.Time;
+            FeaturedDescriptionLabel.Text = featured.Description;
+            FeaturedPlacesLabel.Text = $"{featured.AvailablePlaces} places available";
+
+
         }
 
         // Count label — built dynamically instead of hardcoded
@@ -41,9 +51,11 @@ public partial class HomePage : ContentPage
 
     private async void OnFeaturedCardTapped(object? sender, TappedEventArgs e)
     {
-        if(_featuredOpportunity == null) return;
+        if (_featuredOpportunity == null) return;
 
-        await Shell.Current.GoToAsync($"//{nameof(OpportunitiesPage)}/{nameof(OpportunityDetailsPage)}?Id={_featuredOpportunity.Id}");
+        // await Shell.Current.GoToAsync($"//{nameof(OpportunitiesPage)}/{nameof(OpportunityDetailsPage)}?Id={_featuredOpportunity.Id}");
+        await Shell.Current.GoToAsync($"{nameof(OpportunityDetailsPage)}?Id={_featuredOpportunity.Id}");
+
     }
     // This method name must match the Clicked="..." value in the XAML exactly.
     private async void OnBrowseOpportunitiesClicked(object? sender, EventArgs e)

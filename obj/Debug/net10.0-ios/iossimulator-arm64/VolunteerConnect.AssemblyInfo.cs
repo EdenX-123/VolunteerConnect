@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VolunteerConnect")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+c0c9936ad06f7cfca398d910c52adb4126842504")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+d44b6de4f307fe68d95af5d13a6f9156e5163aa5")]
 [assembly: System.Reflection.AssemblyProductAttribute("VolunteerConnect")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VolunteerConnect")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

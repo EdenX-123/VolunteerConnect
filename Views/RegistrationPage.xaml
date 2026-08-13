@@ -37,7 +37,14 @@
                             <CheckBox x:Name="ConsentCheckBox"/>
 
                             <Label Text="Privacy Consent"
-                                   VerticalOptions="Center"/>
+                                   VerticalOptions="Center"
+                                   TextDecorations="Underline"
+                                   TextColor="#FF512BD4">
+
+                                   <Label.GestureRecognizers>
+                                          <TapGestureRecognizer Tapped="OnPrivacyLinkTapped"/>
+                                   </Label.GestureRecognizers>
+                            </Label>
 
                      </HorizontalStackLayout>
 
@@ -49,7 +56,7 @@
                             IsVisible="False"/>
 
                      <Button Text="Submit Registration"
-                            x:Name="SubmitButton"
+                             x:Name="SubmitButton"
                              Style="{StaticResource PrimaryButtonStyle}"
                              Clicked="OnSubmitClicked"
                              Margin="0,16,0,0"/>

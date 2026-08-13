@@ -4,59 +4,67 @@
              x:Class="VolunteerConnect.Views.OpportunityDetailsPage"
              Title="Opportunity Details">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20"
-                             Spacing="8">
+       <ScrollView>
+              <VerticalStackLayout Padding="20"
+                            Spacing="8">
 
-            <Border
-                StrokeShape="RoundRectangle 12"
-                StrokeThickness="0">
-                
-                <Image x:Name="DetailImage"
-                       HeightRequest="180"
-                       Aspect="AspectFill"/>
-            </Border>
+                     <Border StrokeShape="RoundRectangle 12"
+                                   StrokeThickness="0">
+                            <Image x:Name="DetailImage"
+                                          HeightRequest="180"
+                                          Aspect="AspectFill"/>
+                     </Border>
 
-            <Label x:Name="DetailTitle"
-                   Style="{StaticResource CardTitleStyle}"
-                   FontSize="22"/>
-            <Label x:Name="DetailCategory"
-                   Style="{StaticResource CardSubtitleStyle}"/>
+                     <Label x:Name="DetailTitle"
+                                   Style="{StaticResource CardTitleStyle}"
+                                   FontSize="22"/>
 
-            <Label Text="Date &amp; Time"
-                   Style="{StaticResource SectionHeaderStyle}"
-                   FontSize="16"/>
-            <Label x:Name="DetailDateTime"
-                   Style="{StaticResource BodyTextStyle}"/>
+                     <HorizontalStackLayout Spacing="4">
+                            <Label Text="&#127991;&#65039;"
+                                          FontSize="14"/>
+                            <Label x:Name="DetailCategory"
+                                          Style="{StaticResource CardSubtitleStyle}"/>
+                     </HorizontalStackLayout>
 
-            <Label Text="Location"
-                   Style="{StaticResource SectionHeaderStyle}"
-                   FontSize="16"/>
-            <Label x:Name="DetailLocation"
-                   Style="{StaticResource BodyTextStyle}"/>
+                     <Label Text="&#128197;  Date &amp; Time"
+                                   Style="{StaticResource SectionHeaderStyle}"
+                                   FontSize="16"/>
+                     <Label x:Name="DetailDateTime"
+                                   Style="{StaticResource BodyTextStyle}"/>
 
-            <Label Text="Description"
-                   Style="{StaticResource SectionHeaderStyle}"
-                   FontSize="16"/>
-            <Label x:Name="DetailDescription"
-                   Style="{StaticResource BodyTextStyle}"/>
+                     <Label Text="&#128205;  Location"
+                                   Style="{StaticResource SectionHeaderStyle}"
+                                   FontSize="16"/>
+                     <Label x:Name="DetailLocation"
+                                   Style="{StaticResource BodyTextStyle}"/>
 
-            <Label Text="Requirements"
-                   Style="{StaticResource SectionHeaderStyle}"
-                   FontSize="16"/>
-            <Label x:Name="DetailRequirements"
-                   Style="{StaticResource BodyTextStyle}"/>
+                     <Label Text="&#128221;  Description"
+                                   Style="{StaticResource SectionHeaderStyle}"
+                                   FontSize="16"/>
+                     <Label x:Name="DetailDescription"
+                                   Style="{StaticResource BodyTextStyle}"/>
 
-            <Label x:Name="DetailPlaces"
-                   Style="{StaticResource BodyTextStyle}"
-                   FontAttributes="Bold"/>
+                     <Label Text="&#9989;  Requirements"
+                                   Style="{StaticResource SectionHeaderStyle}"
+                                   FontSize="16"/>
+                     <Label x:Name="DetailRequirements"
+                                   Style="{StaticResource BodyTextStyle}"/>
 
-            <Button x:Name="RegisterButton"
-                    Text="Register Interest"
-                    Margin="0,16,0,0"
-                    Clicked="OnRegisterClicked"/>
+                     <HorizontalStackLayout Spacing="4"
+                                   Margin="0,4,0,0">
+                            <Label Text="&#128101;"
+                                          FontSize="14"/>
+                            <Label x:Name="DetailPlaces"
+                                          Style="{StaticResource BodyTextStyle}"
+                                          FontAttributes="Bold"/>
+                     </HorizontalStackLayout>
 
-        </VerticalStackLayout>
-    </ScrollView>
+                     <Button x:Name="RegisterButton"
+                             Text="Register Interest"
+                             Margin="0,16,0,0"
+                             Clicked="OnRegisterClicked"/>
+
+              </VerticalStackLayout>
+       </ScrollView>
 
 </ContentPage>

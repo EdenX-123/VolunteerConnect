@@ -4,13 +4,13 @@ using VolunteerConnect.Services;
 namespace VolunteerConnect.Views;
 
 [QueryProperty(nameof(OpportunityId), "OpportunityId")]
-[QueryProperty(nameof(RegistrationId),"RegistrationId")]
+[QueryProperty(nameof(RegistrationId), "RegistrationId")]
 public partial class RegistrationPage : ContentPage
 {
     private readonly DatabaseService _databaseService;
-	private VolunteerRegistration? _existingRegistration;
+    private VolunteerRegistration? _existingRegistration;
 
-	public int RegistrationId {get; set; }
+    public int RegistrationId { get; set; }
     public int OpportunityId { get; set; }
 
     public RegistrationPage(DatabaseService databaseService)
@@ -23,21 +23,21 @@ public partial class RegistrationPage : ContentPage
     {
         base.OnAppearing();
 
-		if(RegistrationId !=0)
-		{
-			await LoadExistingRegistrationAsync();
-		}
-		else
-		{
-			var opportunity = await _databaseService.GetOpportunityByIdAsync(OpportunityId);
-			OpportunityTitleLabel.Text = opportunity != null
-				? $"Registering for: {opportunity.Title}"
-				: "Opportunity not found";
-		}
+        if (RegistrationId != 0)
+        {
+            await LoadExistingRegistrationAsync();
+        }
+        else
+        {
+            var opportunity = await _databaseService.GetOpportunityByIdAsync(OpportunityId);
+            OpportunityTitleLabel.Text = opportunity != null
+                ? $"Registering for: {opportunity.Title}"
+                : "Opportunity not found";
+        }
 
     }
 
-	private async Task LoadExistingRegistrationAsync()
+    private async Task LoadExistingRegistrationAsync()
     {
         var registrations = await _databaseService.GetRegistrationsAsync();
         _existingRegistration = registrations.FirstOrDefault(r => r.Id == RegistrationId);
@@ -52,33 +52,33 @@ public partial class RegistrationPage : ContentPage
         ConsentCheckBox.IsChecked = _existingRegistration.ConsentGiven;
 
         SubmitButton.Text = "Update Registration";
-        DeleteButton.IsVisible = true;              
+        DeleteButton.IsVisible = true;
     }
 
-	private async void OnDeleteClicked(object? sender, EventArgs e)
-	{
-		if(_existingRegistration == null)return;
+    private async void OnDeleteClicked(object? sender, EventArgs e)
+    {
+        if (_existingRegistration == null) return;
 
-		bool confirmed = await DisplayAlertAsync
-		(
-			"Delete Registration",
-			"Are you sure you you want to delete this Registration?",
-			"Delete",
-			"Cancel"
-		);
+        bool confirmed = await DisplayAlertAsync
+        (
+            "Delete Registration",
+            "Are you sure you you want to delete this Registration?",
+            "Delete",
+            "Cancel"
+        );
 
-		if(!confirmed)
-			return;
+        if (!confirmed)
+            return;
 
-		await _databaseService.DeleteRegistrationsAsync(_existingRegistration);
+        await _databaseService.DeleteRegistrationsAsync(_existingRegistration);
 
         await _databaseService.IncrementAvailablePlacesAsync(_existingRegistration.OpportunityId);
 
-		await DisplayAlertAsync("Delete", "Registration delete successfully.", "OK");
+        await DisplayAlertAsync("Delete", "Registration delete successfully.", "OK");
 
         await Shell.Current.Navigation.PopToRootAsync();
-		await Shell.Current.GoToAsync("..");
-	}
+        await Shell.Current.GoToAsync("..");
+    }
 
     private async void OnSubmitClicked(object? sender, EventArgs e)
     {
@@ -101,8 +101,8 @@ public partial class RegistrationPage : ContentPage
 
         var registration = new VolunteerRegistration
         {
-			Id = _existingRegistration?.Id ?? 0,
-            OpportunityId = _existingRegistration?.OpportunityId?? OpportunityId,
+            Id = _existingRegistration?.Id ?? 0,
+            OpportunityId = _existingRegistration?.OpportunityId ?? OpportunityId,
             PreferredName = PreferredNameEntry.Text.Trim(),
             ContactDetail = ContactEntry.Text.Trim(),
             Availability = AvailabilityEntry.Text.Trim(),
@@ -113,7 +113,7 @@ public partial class RegistrationPage : ContentPage
 
         await _databaseService.SaveRegistrationAsync(registration);
 
-        if(isNewRegistration)
+        if (isNewRegistration)
         {
             await _databaseService.DecrementAvailablePlacesAsync(registration.OpportunityId);
         }
@@ -121,7 +121,12 @@ public partial class RegistrationPage : ContentPage
         await DisplayAlertAsync("Success", "Your registration has been saved.", "OK");
 
         await Shell.Current.Navigation.PopToRootAsync();
-        await Shell.Current.GoToAsync($"//{nameof(MyRegistrationsPage)}");
+
+    }
+
+    private async void OnPrivacyLinkTapped(object? sender, TappedEventArgs e)
+    {
+        await Navigation.PushModalAsync(new PrivacyInfoPage());
     }
 
     private void ShowError(string message)
