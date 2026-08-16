@@ -53,7 +53,9 @@ public partial class HomePage : ContentPage
     {
         if (_featuredOpportunity == null) return;
 
-        // await Shell.Current.GoToAsync($"//{nameof(OpportunitiesPage)}/{nameof(OpportunityDetailsPage)}?Id={_featuredOpportunity.Id}");
+        //testing carshing
+        // await Shell.Current.GoToAsync($"{nameof(OpportunityDetailsPage)}?Id=999");
+
         await Shell.Current.GoToAsync($"{nameof(OpportunityDetailsPage)}?Id={_featuredOpportunity.Id}");
 
     }
