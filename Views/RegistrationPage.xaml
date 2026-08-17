@@ -18,8 +18,10 @@
 
                      <Label Text="Email or Phone"
                             FontAttributes="Bold"/>
+
                      <Entry x:Name="ContactEntry"
-                            Placeholder="Enter email or phone"/>
+                            Placeholder="Enter email or phone"
+                            Keyboard="Email"/>
 
                      <Label Text="Availability"
                             FontAttributes="Bold"/>
@@ -54,6 +56,12 @@
                      <Label x:Name="ErrorLabel"
                             TextColor="Red"
                             IsVisible="False"/>
+
+                     <Label x:Name="ContactErrorLabel"
+                            TextColor="Red"
+                            FontSize="12"
+                            IsVisible="False"/>
+
 
                      <Button Text="Submit Registration"
                              x:Name="SubmitButton"

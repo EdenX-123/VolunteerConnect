@@ -1,5 +1,6 @@
 using VolunteerConnect.Models;
 using VolunteerConnect.Services;
+using System.Text.RegularExpressions;
 
 namespace VolunteerConnect.Views;
 
@@ -82,12 +83,22 @@ public partial class RegistrationPage : ContentPage
 
     private async void OnSubmitClicked(object? sender, EventArgs e)
     {
+        ContactErrorLabel.IsVisible = false;
+        ErrorLabel.IsVisible = false;
+
         // Validation — required fields + consent
         if (string.IsNullOrWhiteSpace(PreferredNameEntry.Text) ||
             string.IsNullOrWhiteSpace(ContactEntry.Text) ||
             string.IsNullOrWhiteSpace(AvailabilityEntry.Text))
         {
             ShowError("Please fill in all required fields.");
+            return;
+        }
+
+        if (!RegistrationValidator.IsValidContact(ContactEntry.Text))
+        {
+            ContactErrorLabel.Text = "Please enter a valid email address or phone number.";
+            ContactErrorLabel.IsVisible = true;
             return;
         }
 
@@ -134,4 +145,20 @@ public partial class RegistrationPage : ContentPage
         ErrorLabel.Text = message;
         ErrorLabel.IsVisible = true;
     }
+}
+public static class RegistrationValidator
+{
+    private static readonly Regex EmailPattern =
+        new(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.Compiled);
+
+    private static readonly Regex PhonePattern =
+        new(@"^[\d\s\+\-\(\)]{7,15}$", RegexOptions.Compiled);
+
+    public static bool IsValidContact(string contact)
+    {
+        if (string.IsNullOrWhiteSpace(contact)) return false;
+
+        return EmailPattern.IsMatch(contact.Trim()) || PhonePattern.IsMatch(contact.Trim());
+    }
+
 }
