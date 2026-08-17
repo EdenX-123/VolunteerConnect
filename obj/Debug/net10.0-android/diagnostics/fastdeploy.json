@@ -3,15 +3,15 @@
   "Properties": {
     "target.prop.ro.product.build.version.sdk": "36",
     "target.prop.ro.product.cpu.abilist": "arm64-v8a",
-    "target.prop.ro.product.manufacturer": "unknown",
-    "target.prop.ro.product.model": "Android SDK built for arm64",
+    "target.prop.ro.product.manufacturer": "asus",
+    "target.prop.ro.product.model": "ASUS_AI2401_D",
     "target.prop.ro.product.cpu.abi": "arm64-v8a",
     "deploy.error.code": "",
     "deploy.tool": "xamarin.sync",
     "deploy.result": "Success",
     "deploy.supports.fastdev": "True",
     "deploy.systemapp": "False",
-    "deploy.duration.ms": "964",
+    "deploy.duration.ms": "1817",
     "pii.deploy.error": "",
     "pii.deploy.file": ""
   }
