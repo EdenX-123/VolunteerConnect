@@ -45,10 +45,13 @@ public partial class RegistrationPage : ContentPage
 
         if (_existingRegistration == null) return;
 
-        // 预填表单
+    
         PreferredNameEntry.Text = _existingRegistration.PreferredName;
         ContactEntry.Text = _existingRegistration.ContactDetail;
-        AvailabilityEntry.Text = _existingRegistration.Availability;
+        AvailabilityPicker.SelectedItem = AvailabilityPicker.ItemsSource
+            .Cast<string>()
+            .ToList()
+            .IndexOf(_existingRegistration.Availability);
         NotesEditor.Text = _existingRegistration.Notes;
         ConsentCheckBox.IsChecked = _existingRegistration.ConsentGiven;
 
@@ -89,7 +92,7 @@ public partial class RegistrationPage : ContentPage
         // Validation — required fields + consent
         if (string.IsNullOrWhiteSpace(PreferredNameEntry.Text) ||
             string.IsNullOrWhiteSpace(ContactEntry.Text) ||
-            string.IsNullOrWhiteSpace(AvailabilityEntry.Text))
+            AvailabilityPicker.SelectedIndex == -1)
         {
             ShowError("Please fill in all required fields.");
             return;
@@ -116,7 +119,7 @@ public partial class RegistrationPage : ContentPage
             OpportunityId = _existingRegistration?.OpportunityId ?? OpportunityId,
             PreferredName = PreferredNameEntry.Text.Trim(),
             ContactDetail = ContactEntry.Text.Trim(),
-            Availability = AvailabilityEntry.Text.Trim(),
+            Availability = AvailabilityPicker.SelectedItem?.ToString() ?? string.Empty,
             Notes = NotesEditor.Text?.Trim() ?? string.Empty,
             ConsentGiven = true,
             RegistrationDate = _existingRegistration?.RegistrationDate ?? DateTime.Now

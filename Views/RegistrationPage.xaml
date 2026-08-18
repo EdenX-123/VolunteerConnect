@@ -24,9 +24,21 @@
                             Keyboard="Email"/>
 
                      <Label Text="Availability"
-                            FontAttributes="Bold"/>
-                     <Entry x:Name="AvailabilityEntry"
-                            Placeholder="e.g. Weekday mornings"/>
+                                   FontAttributes="Bold"/>
+                     <Picker x:Name="AvailabilityPicker"
+                                   Title="Select your availability">
+                            <Picker.ItemsSource>
+                                   <x:Array Type="{x:Type x:String}">
+                                          <x:String>Weekday mornings</x:String>
+                                          <x:String>Weekday afternoons</x:String>
+                                          <x:String>Weekday evenings</x:String>
+                                          <x:String>Weekend mornings</x:String>
+                                          <x:String>Weekend afternoons</x:String>
+                                          <x:String>Weekend evenings</x:String>
+                                          <x:String>Flexible / Anytime</x:String>
+                                   </x:Array>
+                            </Picker.ItemsSource>
+                     </Picker>
 
                      <Label Text="Notes (optional)"
                             FontAttributes="Bold"/>

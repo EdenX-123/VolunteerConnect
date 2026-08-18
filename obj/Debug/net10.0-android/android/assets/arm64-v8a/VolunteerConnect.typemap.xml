@@ -1,4 +1,4 @@
-<api type="debug" assembly-name="VolunteerConnect" mvid="cd811f6aaaed4087b76526ea11885057">
+<api type="debug" assembly-name="VolunteerConnect" mvid="5c568ec0247645e9b91242d530711cf7">
   <java-to-managed>
     <entry java-name="crc645521e321790494e4/MainActivity" managed-name="VolunteerConnect.MainActivity, VolunteerConnect" managed-type-token-id="33554441" />
     <entry java-name="crc645521e321790494e4/MainApplication" managed-name="VolunteerConnect.MainApplication, VolunteerConnect" managed-type-token-id="33554442" />
